@@ -4,8 +4,9 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ucne.parcial1_daniel.data.entity.Entidadgenerica
-//import com.ucne.registroprestamos.repository.ocupacioneRepository
+import com.ucne.parcial1_daniel.data.entity.Articulos
+
+import com.ucne.parcial1_daniel.data.repository.Articulosrepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,25 +30,25 @@ import javax.inject.Inject
 
 
 data class ListViewModelListUiState(
-    val entidadgenerica: List<Entidadgenerica> = emptyList(),
+    val articulos: List<Articulos> = emptyList(),
     val texto: String = "Meeting"
 )
 
 @HiltViewModel
 class ListViewModel @Inject constructor(
-//    val repository: ocupacioneRepository
+   val repository: Articulosrepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow( ListViewModelListUiState())
     val uiState: StateFlow<ListViewModelListUiState> = _uiState.asStateFlow()
 
-//    init {
-//        viewModelScope.launch {
-//            repository.getAll().collect() { list ->
-//                _uiState.update {
-//                    it.copy( entidadgenerica = list )
-//                }
-//            }
-//        }
-//    }
+    init {
+        viewModelScope.launch {
+            repository.geAll().collect() { list ->
+                _uiState.update {
+                    it.copy( articulos = list )
+                }
+            }
+        }
+    }
 }
