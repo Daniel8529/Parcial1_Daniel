@@ -13,7 +13,7 @@ import com.ucne.parcial1_daniel.data.entity.Entidadgenerica
 
 @Database(
     entities = [Entidadgenerica::class],
-    version = 3,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDataBase : RoomDatabase() {
