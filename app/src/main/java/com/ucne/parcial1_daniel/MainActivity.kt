@@ -20,7 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ucne.parcial1_daniel.navegation.Screen
 import com.ucne.parcial1_daniel.ui.List.ListScreen
-import com.ucne.parcial1_daniel.ui.Registro.GenericoScreen
+import com.ucne.parcial1_daniel.ui.Registro.ArticulosScreen
 import com.ucne.parcial1_daniel.ui.theme.Parcial1_DanielTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,11 +38,11 @@ class MainActivity : ComponentActivity() {
                     composable(Screen.ListScreen.route) {
 
                         ListScreen(
-                            onClick = { navController.navigate(Screen.GenericoScreen.route) }
+                            onClick = { navController.navigate(Screen.ArticulosScreen.route) }
                         )
                     }
-                    composable(Screen.GenericoScreen.route) {
-                        GenericoScreen({ navController.navigateUp() })
+                    composable(Screen.ArticulosScreen.route) {
+                        ArticulosScreen({ navController.navigateUp() })
                     }
 
                 }
