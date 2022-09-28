@@ -25,7 +25,6 @@ class ArticulosViewModel @Inject constructor (val repository: Articulosrepositor
     var Existencia by mutableStateOf("")
 
 
-
     fun Save(){
         viewModelScope.launch {
             repository.insert(
