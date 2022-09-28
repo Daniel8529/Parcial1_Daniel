@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.ucne.parcial1_daniel.data.entity.Entidadgenerica
+import com.ucne.parcial1_daniel.data.entity.Articulos
 
 
 //import com.ucne.parcial1_daniel.entity.ocupacioneRepository
@@ -84,7 +84,7 @@ fun ListScreen(
             .padding(it)) {
 
             EntidadgenericaList(
-                entidadgenerica = uiState.entidadgenerica,
+                articulos = uiState.articulos,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(it)
@@ -99,26 +99,26 @@ fun ListScreen(
 
 @Composable
 fun EntidadgenericaList(
-    entidadgenerica: List<Entidadgenerica>,
+    articulos:List<Articulos>,
     modifier: Modifier = Modifier
 ) {
     LazyColumn(modifier = modifier) {
-        items(entidadgenerica) {entidadgenerica ->
-            EntidadgenericaRow(entidadgenerica)
+        items(articulos) {articulos ->
+            EntidadgenericaRow(articulos)
         }
     }
 }
 
 @Composable
-fun EntidadgenericaRow(entidadgenerica: Entidadgenerica) {
+fun EntidadgenericaRow(articulos: Articulos) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(4.dp)
     ) {
         Text(
-            text =entidadgenerica.Variable1,
-            style = MaterialTheme.typography.h3
+            text ="Descripcion:${articulos.Descripcion}",
+            style = MaterialTheme.typography.h6
         )
 
         Row(
@@ -127,7 +127,17 @@ fun EntidadgenericaRow(entidadgenerica: Entidadgenerica) {
         ) {
 
             Text(
-                text = "Variable2: ${entidadgenerica.Variable2}"
+                text = "Marca: ${articulos.Marca}"
+            )
+
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+
+            Text(
+                text = "Existencia: ${articulos.Existencia}"
             )
 
         }
