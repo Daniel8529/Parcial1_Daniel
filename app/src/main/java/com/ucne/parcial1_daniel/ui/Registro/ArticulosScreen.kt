@@ -89,7 +89,7 @@ fun ArticulosScreen(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone), modifier = Modifier.fillMaxWidth())
             if (ErrorExiste) {
                 Text(
-                    text = "La marca esta vacia",
+                    text = "La Existencia esta vacia",
                     color = MaterialTheme.colors.error,
                     modifier = Modifier.padding(start = 16.dp)
 
