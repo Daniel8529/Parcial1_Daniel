@@ -68,6 +68,7 @@ fun ListScreen(
 
     Scaffold(
         topBar = {
+            TopAppBar(title = { Text(text = "Consulta")}, modifier = Modifier.padding(2.dp), actions = {})
 
         },
         floatingActionButton = {
