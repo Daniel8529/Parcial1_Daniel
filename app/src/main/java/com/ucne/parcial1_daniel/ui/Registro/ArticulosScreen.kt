@@ -116,7 +116,6 @@ fun ArticulosScreen(
                        {
                            if(viewModel.Existencia.toDouble()<1)
                            {
-
                            }else {
                                viewModel.Save()
                                onNavigateBack()
