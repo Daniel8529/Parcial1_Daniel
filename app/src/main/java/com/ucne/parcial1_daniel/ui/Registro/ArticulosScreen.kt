@@ -114,7 +114,7 @@ fun ArticulosScreen(
                    }else {
                        if(viewModel.Existencia.isDigitsOnly())
                        {
-                           if(viewModel.Existencia.toDouble()<0)
+                           if(viewModel.Existencia.toDouble()<1)
                            {
 
                            }else {
