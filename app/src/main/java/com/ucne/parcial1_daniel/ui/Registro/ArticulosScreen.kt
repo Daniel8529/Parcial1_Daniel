@@ -13,6 +13,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,29 +25,35 @@ import com.ucne.parcial1_daniel.data.entity.Articulos
 @Composable
 fun ArticulosScreen(
     onNavigateBack: () -> Unit,
-    viewModel: ArticulosViewModel = hiltViewModel()
+    viewModel: ArticulosViewModel = hiltViewModel(),
+    Articulo: Int=1
 ) {
     var ErrorDescripcion by remember {mutableStateOf(false)}
     var ErrorMarca by remember {mutableStateOf(false)}
     var ErrorExiste by remember {mutableStateOf(false)}
+
     Scaffold(
         topBar = {
 
-        },
+        }
 
     ) {
+
+
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
                 .padding(8.dp)
         ) {
+            TopAppBar(title = { Text(text = "Registro")}, modifier = Modifier.padding(2.dp), actions = {})
             OutlinedTextField(
                 label = { Text(text = "Descripcion")},
                 value =viewModel.Descripcion ,
                 onValueChange ={viewModel.Descripcion=it
                     ErrorDescripcion=false},
-            isError =ErrorDescripcion )
+            isError =ErrorDescripcion , modifier = Modifier.fillMaxWidth())
 
             if (ErrorDescripcion) {
                 Text(
@@ -62,7 +69,7 @@ fun ArticulosScreen(
                 value =viewModel.Marca ,
                 onValueChange ={viewModel.Marca=it
                     ErrorMarca=false},
-                 isError = ErrorMarca,)
+                 isError = ErrorMarca,modifier = Modifier.fillMaxWidth())
             if (ErrorMarca) {
                 Text(
                     text = "La marca esta vacia",
@@ -79,7 +86,7 @@ fun ArticulosScreen(
                 onValueChange ={viewModel.Existencia=it
                     ErrorExiste=false},
                 isError = ErrorExiste,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),)
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone), modifier = Modifier.fillMaxWidth())
             if (ErrorExiste) {
                 Text(
                     text = "La marca esta vacia",
